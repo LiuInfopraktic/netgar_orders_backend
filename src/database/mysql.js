@@ -4,7 +4,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'patata',
-  database: 'infopraktic',
+  database: 'netgar_orders',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

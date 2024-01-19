@@ -1,15 +1,15 @@
 const conn = require('../mysql');
 
-const putOrder = async (user) => {
+const putOrder = async (order) => {
+    console.log(order)
     const connection = await conn.connection();
-    let sql = `select vf.* from view v
-    left join VIEW_FIELDS_CONFIG vf
-    on v.company = vf.company and v.id = vf.id_view
-    where user = ?;`;
+    let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
     try{
-        const [rows, fields] = await connection.execute(sql,[user]);
+        const [rows, fields] = await connection.execute(sql,[order.dni, order.name, order.emp, order.tel, order.type,new Date()]);
+        console.log(rows)
         return rows;
     }catch(err){
+        console.log(err)
     } finally {
         connection.release();
     }

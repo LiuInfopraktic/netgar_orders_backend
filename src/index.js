@@ -8,7 +8,7 @@ const v01Router = require("./v0.1/routes");
 
 app.use(cors({ origin: '*' }));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+// app.use(express.urlencoded({extended: false}));
 app.use("/api/v0.1", v01Router);
 
 app.listen(PORT, () => {

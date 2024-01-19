@@ -1,7 +1,7 @@
 const orderDatabase = require('../../database/order_database/orderDatabase');
 
-const putOrder = async (user) => {
-    let response = await orderDatabase.putOrder(user);
+const putOrder = async (order) => {
+    let response = await orderDatabase.putOrder(order);
     return response;
 }
 
