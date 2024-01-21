@@ -14,4 +14,4 @@ const putOrder = async (req, res) => {
     } else res.status(422).send({error:"order details missing"})
 }
 
-module.exports = { putOrder, test }
+module.exports = { putOrder }
