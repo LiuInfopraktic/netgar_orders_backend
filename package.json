@@ -9,6 +9,7 @@
   "author": "Liu Santana",
   "license": "ISC",
   "dependencies": {
+    "api": "^6.1.1",
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "express": "^4.18.2",
