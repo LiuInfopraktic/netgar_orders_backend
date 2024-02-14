@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+/**********************
+ *    Login
+**********************/
+const login = require("../../controllers/login_controller/loginController");
+router.post('/login', login.login);
 
 /**********************
  *    Orders
 **********************/
 const orders = require("../../controllers/order_controller/orderController");
+router.get('/orders', orders.getOrders)
 router.post('/orders', orders.putOrder)
 
 /*********************
