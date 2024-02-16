@@ -10,7 +10,7 @@ const getOrders = async() => {
         const [rows, fields] = await connection.execute(sql,[])
         return rows;
     }catch(err){
-        console.log(err)
+        return err;
     } finally {
         connection.release();
     }
@@ -24,9 +24,9 @@ const putOrder = async (order) => {
     let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
     try{
         const [rows, fields] = await connection.execute(sql,[order.dni, order.name, order.emp, order.tel, order.type,new Date()]);
-        return rows;
+        return 'OK';
     }catch(err){
-        console.log(err)
+        return err
     } finally {
         connection.release();
     }
