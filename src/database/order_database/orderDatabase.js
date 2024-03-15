@@ -4,9 +4,9 @@ const conn = require('../mysql');
  * GETs
 ***************/
 const getOrders = async() => {
-    const connection = await conn.connection();
-    let sql = `select dni, name, company, phone_number, type, data from orders order by data desc`;
     try{
+        const connection = await conn.connection();
+        let sql = `select dni, name, company, phone_number, type, data from orders order by data desc`;
         const [rows, fields] = await connection.execute(sql,[])
         return rows;
     }catch(err){
@@ -20,9 +20,9 @@ const getOrders = async() => {
  * POSTs
 ***************/
 const putOrder = async (order) => {
-    const connection = await conn.connection();
-    let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
     try{
+        const connection = await conn.connection();
+        let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
         const [rows, fields] = await connection.execute(sql,[order.dni, order.name, order.emp, order.tel, order.type,new Date()]);
         return 'OK';
     }catch(err){

@@ -1,9 +1,9 @@
 const conn = require('../mysql');
 
 const login = async (user) => {
-    const connection = await conn.connection();
-    let sql = "select * from user where user = ? and password = ?";
     try{
+        const connection = await conn.connection();
+        let sql = "select * from user where user = ? and password = ?";
         const [rows, fields] = await connection.execute(sql,[user.user, user.pass]);
         let response = '';
         if(rows.length > 0) response = rows[0] // user & pass match
