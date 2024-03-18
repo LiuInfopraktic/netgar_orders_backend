@@ -16,7 +16,6 @@ const getOrders = async () => {
  * POSTs
 ***************/
 const putOrder = async (order) => {
-    console.log('aaaa')
     let response = await orderDatabase.putOrder(order);
     return response;
 }

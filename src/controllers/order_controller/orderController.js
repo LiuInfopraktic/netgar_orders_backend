@@ -23,7 +23,6 @@ const putOrder = async (req, res) => {
     if(order.name && order.tel && order.emp && order.type && order.dni){
         try{
             let response = await orderService.putOrder(order);
-            console.log(response)
             if(response == 'OK') res.status(200).send({message:"Order added successfully"});
             else {
                 await email.sendemail_action(JSON.stringify({dni:order.dni, name:order.name, emp:order.emp, tel:order.tel, type:order.type}), JSON.stringify(response))
