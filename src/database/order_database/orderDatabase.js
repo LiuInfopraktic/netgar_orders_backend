@@ -4,9 +4,9 @@ const conn = require('../mysql');
  * GETs
 ***************/
 const getOrders = async() => {
+    const connection = await conn.connection();
+    let sql = `select dni, name, company, phone_number, type, data from orders order by data desc`;
     try{
-        const connection = await conn.connection();
-        let sql = `select dni, name, company, phone_number, type, data from orders order by data desc`;
         const [rows, fields] = await connection.execute(sql,[])
         return rows;
     }catch(err){
