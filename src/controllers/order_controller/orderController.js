@@ -23,13 +23,14 @@ const putOrder = async (req, res) => {
     if(order.name && order.tel && order.emp && order.type && order.dni){
         try{
             let response = await orderService.putOrder(order);
+            console.log(response)
             if(response == 'OK') res.status(200).send({message:"Order added successfully"});
             else {
                 await email.sendemail_action(JSON.stringify({dni:order.dni, name:order.name, emp:order.emp, tel:order.tel, type:order.type}), JSON.stringify(response))
                 res.status(401).send({error:"couldn't add the order"});
             }
         } catch(e) {
-            await email.sendemail_action(JSON.stringify({dni:order.dni, name:order.name, emp:order.emp, tel:order.tel, type:order.type}), JSON.stringify(e))
+            // await email.sendemail_action(JSON.stringify({dni:order.dni, name:order.name, emp:order.emp, tel:order.tel, type:order.type}), JSON.stringify(e))
             res.status(500).send({error:"Internal server error"});
         }
     } else res.status(422).send({error:"order details missing"})

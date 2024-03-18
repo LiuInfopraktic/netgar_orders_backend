@@ -20,9 +20,11 @@ const getOrders = async() => {
  * POSTs
 ***************/
 const putOrder = async (order) => {
+    console.log('bbbb')
+    const connection = await conn.connection();
+    let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
     try{
-        const connection = await conn.connection();
-        let sql = `insert into orders (dni, name, company, phone_number, type, data) values (?,?,?,?,?,?)`;
+        console.log('bbbb')
         const [rows, fields] = await connection.execute(sql,[order.dni, order.name, order.emp, order.tel, order.type,new Date()]);
         return 'OK';
     }catch(err){
